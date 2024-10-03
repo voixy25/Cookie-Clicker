@@ -4,16 +4,7 @@
  */
 package demo;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -23,30 +14,14 @@ import java.util.logging.Logger;
 
 
 public class UvodnaStran extends javax.swing.JFrame {
-
-    public static int s;
-    public static int ns = 1;
-    public static File save;
-    public static File saves;
-    public static int x;
-    Path currentRelativePath = Paths.get("");
-    public String pat = currentRelativePath.toAbsolutePath().toString();
-    public File f = new File(pat+"\\saves");
     
     
     public UvodnaStran() {
         initComponents();
+        this.setTitle("Cookie Clicker");
         jOptionPane1.setVisible(false);
-
-        save = new File(pat+"\\saves\\"+SaveFiles.savefile1);
-        
-        saves = new File(pat+"\\saves.txt");
-        
-        String ff[] = f.list();
-        
-        if (ff.length==5) {
-            ngbg.setEnabled(false);
-            }
+        ImageIcon img = new ImageIcon("src/slike/PerfectCookie (1).png");
+        this.setIconImage(img.getImage());
     }
 
 
@@ -60,13 +35,10 @@ public class UvodnaStran extends javax.swing.JFrame {
     private void initComponents() {
 
         jOptionPane1 = new javax.swing.JOptionPane();
-        jTextField1 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
         egbg = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        lgbg = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
-        ngbg = new javax.swing.JLabel();
+        info = new javax.swing.JLabel();
+        register = new javax.swing.JLabel();
+        login = new javax.swing.JLabel();
         bg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,49 +48,38 @@ public class UvodnaStran extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         getContentPane().add(jOptionPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 430, -1, -1));
-        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 360, 122, -1));
 
-        jLabel3.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("EXIT GAME");
-        jLabel3.setFocusable(false);
-        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(786, 360, -1, -1));
-
-        egbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/—Pngtree—buttons games button illustration_5544907 (1).png"))); // NOI18N
+        egbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/leaderboard.png"))); // NOI18N
         egbg.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 egbgMouseClicked(evt);
             }
         });
-        getContentPane().add(egbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(738, 334, 196, -1));
+        getContentPane().add(egbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(340, 330, 200, 100));
 
-        jLabel2.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("LOAD GAME");
-        jLabel2.setFocusable(false);
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(574, 358, -1, -1));
-
-        lgbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/—Pngtree—buttons games button illustration_5544907 (1).png"))); // NOI18N
-        lgbg.addMouseListener(new java.awt.event.MouseAdapter() {
+        info.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/info.png"))); // NOI18N
+        info.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                lgbgMouseClicked(evt);
+                infoMouseClicked(evt);
             }
         });
-        getContentPane().add(lgbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(526, 332, 196, -1));
+        getContentPane().add(info, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 330, 200, 100));
 
-        jLabel1.setFont(new java.awt.Font("Comic Sans MS", 0, 18)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("NEW GAME");
-        jLabel1.setFocusable(false);
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(360, 356, -1, -1));
-
-        ngbg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/—Pngtree—buttons games button illustration_5544907 (1).png"))); // NOI18N
-        ngbg.addMouseListener(new java.awt.event.MouseAdapter() {
+        register.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/register.png"))); // NOI18N
+        register.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                ngbgMouseClicked(evt);
+                registerMouseClicked(evt);
             }
         });
-        getContentPane().add(ngbg, new org.netbeans.lib.awtextra.AbsoluteConstraints(308, 330, 196, -1));
+        getContentPane().add(register, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 330, 200, 100));
+
+        login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/login (2).png"))); // NOI18N
+        login.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginMouseClicked(evt);
+            }
+        });
+        getContentPane().add(login, new org.netbeans.lib.awtextra.AbsoluteConstraints(740, 330, 200, 100));
 
         bg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/slike/start.png"))); // NOI18N
         bg.setToolTipText("");
@@ -128,49 +89,25 @@ public class UvodnaStran extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ngbgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_ngbgMouseClicked
-        if (ngbg.isEnabled()) {
-        if (!jTextField1.getText().isEmpty()) {
-            
-                
-                s++;
-                    try {
-                        PrintWriter pw = new PrintWriter(new FileWriter(saves,false));
-                        pw.println(s);
-                        pw.close();
+    private void loginMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginMouseClicked
+    new Login().setVisible(true);
+    dispose();
+    }//GEN-LAST:event_loginMouseClicked
 
-                    } catch (IOException ex) {
-                        Logger.getLogger(Okno1.class.getName()).log(Level.SEVERE, null, ex);
-
-                    }
-                save = new File(pat+"\\saves\\"+jTextField1.getText()+".txt");
-                
-                new Okno1().setVisible(true);
-                dispose();
-            
-        
-        } else {
-        
-            jOptionPane1.showMessageDialog(null, "Enter a save file name!");
-        
-        }
-        } else {
-        
-            jOptionPane1.showMessageDialog(null, "You have reached the maximum amount of saves (5)! Load from a save!");
-            new SaveFiles().setVisible(true);
-            dispose();
-        
-        }
-    }//GEN-LAST:event_ngbgMouseClicked
-
-    private void lgbgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lgbgMouseClicked
-        new SaveFiles().setVisible(true);
+    private void registerMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_registerMouseClicked
+        new Registracija().setVisible(true);
         dispose();
-    }//GEN-LAST:event_lgbgMouseClicked
+    }//GEN-LAST:event_registerMouseClicked
 
     private void egbgMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_egbgMouseClicked
+        new Leaderboard().setVisible(true);
         dispose();
     }//GEN-LAST:event_egbgMouseClicked
+
+    private void infoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_infoMouseClicked
+        new Vizitka().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_infoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -210,12 +147,9 @@ public class UvodnaStran extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel bg;
     private javax.swing.JLabel egbg;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel info;
     private javax.swing.JOptionPane jOptionPane1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JLabel lgbg;
-    private javax.swing.JLabel ngbg;
+    private javax.swing.JLabel login;
+    private javax.swing.JLabel register;
     // End of variables declaration//GEN-END:variables
 }
